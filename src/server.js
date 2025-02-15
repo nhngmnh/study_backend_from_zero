@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
-const port = 3000
-const path=require('path')
+require('dotenv').config()
+const path=require('path');
+const port=process.env.PORT;
 app.set('views',path.join(__dirname, 'views'));
 app.set('view engine', 'ejs')
 
@@ -14,6 +15,6 @@ app.get('/ngl', (req, res) => {
 app.get('/hi', (req, res) => {
     res.render('index.ejs', { title: 'Hey', message: 'Hello there!' })
   })
-app.listen(port, () => {
+app.listen(port,process.env.HOST_NAME, () => {
   console.log(`Example app listening on port ${port}`)
 })
