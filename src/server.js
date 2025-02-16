@@ -1,13 +1,15 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
-require('dotenv').config()
 const path=require('path');
 const port=process.env.PORT;
-app.set('views',path.join(__dirname, 'views'));
-app.set('view engine', 'ejs')
+const configViewEngine= require('./config/configViewEngine');
 
+configViewEngine(app);
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World my name is Minh!');
+  console.log(__dirname);
+  
 })
 app.get('/ngl', (req, res) => {
     res.send('Hello vo cua to Nguyen Gia Linh!')
