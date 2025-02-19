@@ -9,13 +9,6 @@ const connection= require('./config/db');
 configViewEngine(app);
 app.use('/', router);
 
-connection.query(
-  'select * from Users',
-  function (err,results,fields) {
-    console.log('results',results);
-    console.log('fields',fields);
-  }
-) 
 app.listen(port,process.env.HOST_NAME, () => {
   console.log(`Example app listening on port ${port}`)
 })
