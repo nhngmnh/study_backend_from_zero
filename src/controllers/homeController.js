@@ -1,4 +1,5 @@
 const connection=require('../config/db');
+const { getAllUsers } = require('../services/CRUDServices');
 
 const  hoiNhuNgocMinh= async(req,res)=>{
     connection.query('SELECT * FROM Users', (err, results) => {
@@ -15,25 +16,25 @@ const  hoiNhuNgocMinh= async(req,res)=>{
 const xulyEjs=(req,res)=>{
     res.render('index.ejs');
 }
-const getHomePage=(req,res)=>{
-    return res.render('home.ejs');
+const getHomePage= async(req,res)=>{
+    let results= await getAllUsers();
+    return res.render('home.ejs',{listUsers: results});
 }
-const createUser=(req,res)=>{
+const createUser=async(req,res)=>{
     const {email,name,city}=req.body;
-    console.log(email,name,city);
-    connection.query('INSERT INTO Users (email, name, city) VALUES (?,?,?)', [email, name, city], (err, result) => {
-        if (err) {
-            console.error('Error', err);
-            res.status(500).send('Lỗi máy chủ');
-            return;
-        }
-    })
+
+    let[results,fields]= await connection.query('INSERT INTO Users (email, name, city) VALUES (?,?,?)',[email,name,city]);
+    console.log(req.body);
+    
     res.send('Success');
+}
+const createForm = (req, res) =>{
+    return res.render('createUser.ejs');
 }
 module.exports = {
     hoiNhuNgocMinh,
     xulyEjs,
     getHomePage,
-    createUser
- 
+    createUser,
+    createForm,
 }
