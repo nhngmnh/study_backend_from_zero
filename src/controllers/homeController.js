@@ -15,8 +15,12 @@ const  hoiNhuNgocMinh= async(req,res)=>{
 const xulyEjs=(req,res)=>{
     res.render('index.ejs', {title: 'Hey', message: 'Hello there!' });
 }
+const getHomePage=(req,res)=>{
+    return res.render('home.ejs');
+}
 module.exports = {
     hoiNhuNgocMinh,
     xulyEjs,
+    getHomePage
  
 }
