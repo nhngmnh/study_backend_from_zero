@@ -15,22 +15,24 @@
       </div>
       <div>
         <div>
+        <form action="/create-user" method="post">
             <fieldset id="box" >
             <legend>Person</legend>
             <div>
                 <label>Email</label>
-                <input class="inputtext" type="text"/>
+                <input class="inputtext" type="text" name="email"/>
             </div>
             <div>
                 <label>Name</label>
-                <input class="inputtext" type="text"/>
+                <input class="inputtext" type="text" name="name"/>
             </div>
             <div>
                 <label>City</label>
-                <input class="inputtext" type="text"/>
+                <input class="inputtext" type="text" name="city"/>
             </div>
             <button id="save">Save</button>
         </fieldset>
+    </form>
         </div>
       </div>
 </body>

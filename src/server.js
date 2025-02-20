@@ -6,6 +6,8 @@ const path=require('path');
 const port=process.env.PORT;
 const configViewEngine= require('./config/configViewEngine');
 const connection= require('./config/db');
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
 configViewEngine(app);
 app.use('/', router);
 

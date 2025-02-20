@@ -13,14 +13,27 @@ const  hoiNhuNgocMinh= async(req,res)=>{
     });
 }
 const xulyEjs=(req,res)=>{
-    res.render('index.ejs', {title: 'Hey', message: 'Hello there!' });
+    res.render('index.ejs');
 }
 const getHomePage=(req,res)=>{
     return res.render('home.ejs');
 }
+const createUser=(req,res)=>{
+    const {email,name,city}=req.body;
+    console.log(email,name,city);
+    connection.query('INSERT INTO Users (email, name, city) VALUES (?,?,?)', [email, name, city], (err, result) => {
+        if (err) {
+            console.error('Error', err);
+            res.status(500).send('Lỗi máy chủ');
+            return;
+        }
+    })
+    res.send('Success');
+}
 module.exports = {
     hoiNhuNgocMinh,
     xulyEjs,
-    getHomePage
+    getHomePage,
+    createUser
  
 }
