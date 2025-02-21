@@ -1,5 +1,5 @@
 const connection=require('../config/db');
-const { getAllUsers } = require('../services/CRUDServices');
+const { getAllUsers, getElementById } = require('../services/CRUDServices');
 
 const  hoiNhuNgocMinh= async(req,res)=>{
     connection.query('SELECT * FROM Users', (err, results) => {
@@ -31,10 +31,11 @@ const createUser=async(req,res)=>{
 const createForm = (req, res) =>{
     return res.render('createUser.ejs');
 }
-const getUpdateUser = (req,res)=>{
+const getUpdateUser = async (req,res)=>{
     console.log(req.params.id);
+    let user= await getElementById(req.params.id);
     
-    return res.render('updateUser.ejs');
+    return res.render('updateUser.ejs',{user: user});
 }
 module.exports = {
     hoiNhuNgocMinh,

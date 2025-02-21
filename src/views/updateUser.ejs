@@ -13,20 +13,21 @@
       </div>
       <div>
         <div>
-        <form action="/update-user" method="get">
+            <%=user.id%>
+        <form action="/update-user" method="post">
             <fieldset id="box" >
             <legend>Person</legend>
             <div>
                 <label>Email</label>
-                <input class="inputtext" type="text" name="email"/>
+                <input class="inputtext" type="text" name="email" value="<%=user.email%>"/>
             </div>
             <div>
                 <label>Name</label>
-                <input class="inputtext" type="text" name="name"/>
+                <input class="inputtext" type="text" name="name" value="<%=user.name%>"/>
             </div>
             <div>
                 <label>City</label>
-                <input class="inputtext" type="text" name="city"/>
+                <input class="inputtext" type="text" value="<%=user.city%>"/>
             </div>
             <button id="save">Save</button>
         </fieldset>
