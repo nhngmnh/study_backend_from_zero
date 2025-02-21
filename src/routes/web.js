@@ -8,5 +8,5 @@ router.get('/hi',xulyEjs)
 router.get('/',getHomePage);
 router.post('/create-user',createUser)
 router.get('/create',createForm)
-router.post('/update-user',getUpdateUser);
+router.get('/update-user/:id',getUpdateUser);
 module.exports = router;

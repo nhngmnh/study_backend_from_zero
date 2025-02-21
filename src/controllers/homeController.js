@@ -32,6 +32,8 @@ const createForm = (req, res) =>{
     return res.render('createUser.ejs');
 }
 const getUpdateUser = (req,res)=>{
+    console.log(req.params.id);
+    
     return res.render('updateUser.ejs');
 }
 module.exports = {
