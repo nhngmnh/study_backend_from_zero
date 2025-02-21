@@ -11,37 +11,32 @@
         <a class="active" href="#home">Home</a>
         <a href="/create">Create</a>
       </div>
-      <%= JSON.stringify(listUsers) %>
+      
       <h2>Hoverable Table</h2>
 
       <p>Move the mouse over the table rows to see the effect.</p>
-      
+      <%= JSON.stringify(listUsers) %>
       <table>
         <tr>
           <th>email</th>
           <th>name</th>
           <th>city</th>
+          <th>Action</th>
         </tr>
+        <% listUsers.forEach(function(user) { %>
         <tr>
-          <td>Peter</td>
-          <td>Griffin</td>
-          <td>$100</td>
+          <td><%=user.email%></td>
+          <td><%=user.name%></td>
+          <td><%=user.city%></td>
+          <td>
+            <a href="/update-user">
+              Edit
+            </a>
+              Delete
+            </button>
+          </td>
         </tr>
-        <tr>
-          <td>Lois</td>
-          <td>Griffin</td>
-          <td>$150</td>
-        </tr>
-        <tr>
-          <td>Joe</td>
-          <td>Swanson</td>
-          <td>$300</td>
-        </tr>
-        <tr>
-          <td>Cleveland</td>
-          <td>Brown</td>
-          <td>$250</td>
-        </tr>
+        <% }); %> 
       </table>
       
 </body>

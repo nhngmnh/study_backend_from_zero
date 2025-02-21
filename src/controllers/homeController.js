@@ -31,10 +31,15 @@ const createUser=async(req,res)=>{
 const createForm = (req, res) =>{
     return res.render('createUser.ejs');
 }
+const getUpdateUser = (req,res)=>{
+    return res.render('updateUser.ejs');
+}
 module.exports = {
     hoiNhuNgocMinh,
     xulyEjs,
     getHomePage,
     createUser,
     createForm,
+    getUpdateUser,
+ 
 }
