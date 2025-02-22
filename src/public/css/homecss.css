@@ -59,3 +59,6 @@ table {
   }
   
   tr:hover {background-color: coral;}
+.hide{
+    display: none ;
+}

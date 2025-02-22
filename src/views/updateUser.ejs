@@ -8,15 +8,19 @@
 </head>
 <body>
     <div class="topnav">
-        <a  href="#home">Home</a>
+        <a  href="/">Home</a>
         <a href="/create" class="active">Create</a>
       </div>
       <div>
         <div>
-            <%=user.id%>
-        <form action="/update-user" method="post">
+            
+        <form action="/saveEditUser" method="post">
             <fieldset id="box" >
             <legend>Person</legend>
+            <div class="hide">
+                <label>Id: </label>
+                <input class="inputtext " type="text" name="id" value="<%=user.id%>"/>
+            </div>
             <div>
                 <label>Email</label>
                 <input class="inputtext" type="text" name="email" value="<%=user.email%>"/>
@@ -27,7 +31,7 @@
             </div>
             <div>
                 <label>City</label>
-                <input class="inputtext" type="text" value="<%=user.city%>"/>
+                <input class="inputtext" type="text" name="city" value="<%=user.city%>"/>
             </div>
             <button id="save">Save</button>
         </fieldset>

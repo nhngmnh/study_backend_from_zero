@@ -1,5 +1,5 @@
 const connection=require('../config/db');
-const { getAllUsers, getElementById } = require('../services/CRUDServices');
+const { getAllUsers, getElementById, saveEditUser } = require('../services/CRUDServices');
 
 const  hoiNhuNgocMinh= async(req,res)=>{
     connection.query('SELECT * FROM Users', (err, results) => {
@@ -37,6 +37,13 @@ const getUpdateUser = async (req,res)=>{
     
     return res.render('updateUser.ejs',{user: user});
 }
+const postUpdateUser =async(req,res)=>{
+    const {id,email,name,city}=req.body;
+    await saveEditUser(email,name,city,id);
+    //res.send('Success');
+    res.redirect('/');
+ 
+}
 module.exports = {
     hoiNhuNgocMinh,
     xulyEjs,
@@ -44,5 +51,6 @@ module.exports = {
     createUser,
     createForm,
     getUpdateUser,
+    postUpdateUser,
  
 }
