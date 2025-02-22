@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Delete a user</title>
     <link rel="stylesheet" href="/css/homecss.css">
 </head>
 <body>
@@ -13,22 +13,18 @@
       </div>
       <div>
         <div>
-        <form action="/create-user" method="post">
+            
+        <form action="/deleteUser/<%=user.id%>" method="post">
             <fieldset id="box" >
             <legend>Person</legend>
-            <div>
-                <label>Email</label>
-                <input class="inputtext" type="text" name="email"/>
+            <div class="hide">
+                <label>Id: </label>
+                <input class="inputtext " type="text" name="id" value="<%=user.id%>"/>
             </div>
             <div>
-                <label>Name</label>
-                <input class="inputtext" type="text" name="name"/>
+                <p>Are you sure to delete the user with email <%=user.email%></p>
             </div>
-            <div>
-                <label>City</label>
-                <input class="inputtext" type="text" name="city"/>
-            </div>
-            <button id="save">Save</button>
+            <button id="confirm">Confirm</button>
         </fieldset>
     </form>
         </div>

@@ -13,7 +13,9 @@ const saveEditUser = async (newEmail, newName, newCity, userId) => {
         [newEmail, newName, newCity, userId]
     );
 }
-
+const deleteById = async(userId) =>{
+    await connection.query(`delete from Users WHERE id= ?`, userId);
+}
 module.exports = {
-    getAllUsers, getElementById,saveEditUser
+    getAllUsers, getElementById,saveEditUser,deleteById
 }

@@ -1,5 +1,5 @@
 const connection=require('../config/db');
-const { getAllUsers, getElementById, saveEditUser } = require('../services/CRUDServices');
+const { getAllUsers, getElementById, saveEditUser, deleteById } = require('../services/CRUDServices');
 
 const  hoiNhuNgocMinh= async(req,res)=>{
     connection.query('SELECT * FROM Users', (err, results) => {
@@ -44,6 +44,18 @@ const postUpdateUser =async(req,res)=>{
     res.redirect('/');
  
 }
+const deleteUser = async(req,res)=>{
+    let id=req.params.id;
+    await deleteById(id);
+    // res.send('h');
+    res.redirect('/');
+}
+const deleteUserView = async(req,res)=>{
+  const id = req.params.id;
+  console.log(id);
+  let user = await getElementById(id);
+    res.render('deleteUser.ejs',{user:user});
+}
 module.exports = {
     hoiNhuNgocMinh,
     xulyEjs,
@@ -52,5 +64,7 @@ module.exports = {
     createForm,
     getUpdateUser,
     postUpdateUser,
+    deleteUser,
+    deleteUserView,
  
 }
