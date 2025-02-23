@@ -1,8 +1,8 @@
-const connection=require('../config/db');
+const sequelize=require('../config/db');
 const { getAllUsers, getElementById, saveEditUser, deleteById } = require('../services/CRUDServices');
 
 const  hoiNhuNgocMinh= async(req,res)=>{
-    connection.query('SELECT * FROM Users', (err, results) => {
+    sequelize.query('SELECT * FROM Users', (err, results) => {
         if (err) {
             console.error('❌ Lỗi truy vấn:', err);
             res.status(500).send('Lỗi máy chủ');
